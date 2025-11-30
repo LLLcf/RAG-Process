@@ -1,0 +1,30 @@
+# ================= 系统与设备 =================
+system:
+  device: "auto"  # "auto", "cuda", or "cpu"
+
+# ================= API 配置 =================
+api:
+  key: "sk-dualmodfxoldylsfrmetccjnyqyzszixmnxfbpgykzwygsay"
+  base_url: "https://api.siliconflow.cn/v1"
+  ocr_model: "deepseek-ai/DeepSeek-OCR"
+
+# ================= 路径配置 =================
+paths:
+  input_folder: "../data/原始文档"
+  processed_folder: "../data/清洗数据"
+  vector_db_path: "../data/FAISS_Vector_DB"
+  # 新增：用于存储切分后的文档对象，供BM25混合检索使用
+  doc_pickle_path: "../data/docs_chunks.pkl"
+
+# ================= 模型配置 =================
+models:
+  # Embedding 模型路径
+  embedding_name: "/root/lanyun-fs/models/Qwen3-Embedding-0.6B"
+  
+# ================= RAG 参数 =================
+rag:
+  chunk_size: 600
+  chunk_overlap: 150
+  citation_threshold: 0.75
+  # 混合检索权重: [BM25权重, 向量权重]
+  hybrid_weights: [0.6, 0.4]
